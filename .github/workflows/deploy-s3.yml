@@ -16,7 +16,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-region: us-east-1
-      - name: Build React App
+      - name: Build do projeto
         run: npm install && npm run build
-      - name: Deploy app build to S3 bucket
+      - name: Deploy com envio para AWS S3
         run: aws s3 sync ./build/ s3://hackathon-3 --delete
