@@ -27,12 +27,12 @@ jobs:
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v2
       with:
-        aws-access-key-id: ${{ aws.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ aws.AWS_SECRET_ACCESS_KEY }}
+        aws-access-key-id: ${{ AWS.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ AWS.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-1  # Altere para a região do seu bucket S3
 
     - name: Deploy to S3
       run: aws s3 sync build/ s3://hackathon-3 --delete
       env:
-        AWS_ACCESS_KEY_ID: ${{ aws.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ aws.AWS_SECRET_ACCESS_KEY }}
+        AWS_ACCESS_KEY_ID: ${{ AWS.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ AWS.AWS_SECRET_ACCESS_KEY }}
